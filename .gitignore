@@ -1,0 +1,41 @@
+__pycache__
+**/*.pyc
+
+# Packages
+*.egg
+!/tests/**/*.egg
+/*.egg-info
+/dist/*
+build
+_build
+.cache
+*.so
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.pytest_cache
+htmlcov
+
+.DS_Store
+.idea/*
+.python-version
+.vscode/*
+
+/setup.cfg
+MANIFEST.in
+/setup.py
+/docs/site/*
+.mypy_cache
+
+.venv/
+/releases/*
+pip-wheel-metadata
+
+*slask*
+*_pom_tags.xml
+*__merged_refs.json
+*log
+**/bin

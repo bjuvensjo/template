@@ -1,0 +1,16 @@
+name: ci
+
+on:
+  push:
+    branches: ["develop", "main"]
+  pull_request:
+    branches: ["develop"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    uses: bjuvensjo/.github/.github/workflows/python-poetry-ci.yml@main
+    with:
+      cov: template
