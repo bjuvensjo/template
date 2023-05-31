@@ -33,4 +33,5 @@ testpaths = [
 pythonpath = "src"
 
 [tool.poetry.scripts]
+template-groovy-project = "template.commands:groovy_project"
 template-python-project = "template.commands:python_project"
