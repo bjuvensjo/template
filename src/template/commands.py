@@ -15,5 +15,5 @@ from template.python_project import template as tpp
 )
 @click.argument("name")
 def python_project(output_dir: str, name: str) -> None:
-    tpp.generate(output_dir=Path(output_dir), name=name)
+    tpp.create(output_dir=Path(output_dir), name=name)
     print(f"Created {name} in {output_dir}")
