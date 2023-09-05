@@ -16,7 +16,7 @@ def create(output_dir: Path, name: str) -> str:
         templates_variables={
             "name": name,
             "workspace_folder": output_path.absolute().as_posix(),
-            "package": name.replace("-", "_").lower(),
+            "package": name.replace("-", "_").replace(".", "_").lower(),
         },
         output_path=output_path,
     )
