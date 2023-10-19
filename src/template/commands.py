@@ -3,8 +3,8 @@ from pathlib import Path
 import click
 from rich import print
 
-from template.groovy_project import template as gp
-from template.python_project import template as pp
+from template.groovy_maven_project import template as gp
+from template.python_poetry_project import template as pp
 
 
 @click.command()
@@ -39,7 +39,7 @@ from template.python_project import template as pp
     help="The Java version. Default '17'",
 )
 @click.argument("artifact_id")
-def groovy_project(
+def groovy_maven_project(
     output_dir: str,
     group_id: str,
     artifact_id: str,
@@ -67,5 +67,5 @@ def groovy_project(
     help="The directory in which to create the python project. Default '.'",
 )
 @click.argument("name")
-def python_project(output_dir: str, name: str) -> None:
+def python_poetry_project(output_dir: str, name: str) -> None:
     print(pp.create(output_dir=Path(output_dir), name=name))

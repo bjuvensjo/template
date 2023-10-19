@@ -16,7 +16,9 @@ def get_templates(search_path: Path, variables: dict) -> Sequence[tuple[Path, st
 
     # templates
     templates = [
-        (template, env.get_template(template)) for template in env.list_templates()
+        (template, env.get_template(template))
+        for template in env.list_templates()
+        if "__pycache__" not in template
     ]
 
     # rendered templates
