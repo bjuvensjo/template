@@ -3,7 +3,6 @@ from unittest.mock import Mock, call, patch
 
 import pytest
 from jinja2.exceptions import UndefinedError
-
 from template import templating
 
 
@@ -66,9 +65,7 @@ def test_write_path_exists():
     output_path = Mock(spec=Path, joinpath=Mock(return_value=joined_path))
 
     with pytest.raises(RuntimeError) as e:
-        templating.write(
-            content=[(path, data)], output_path=output_path, exists_ok=False
-        )
+        templating.write(content=[(path, data)], output_path=output_path, exists_ok=False)
 
     assert str(e.value) == f"Output path exists: {joined_path}"
     assert output_path.joinpath.mock_calls == [call(path)]

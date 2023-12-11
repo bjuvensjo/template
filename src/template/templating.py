@@ -2,8 +2,8 @@
 A generic module for templating with Jinja 2, combined with static content.
 """
 import logging
+from collections.abc import Sequence
 from pathlib import Path
-from typing import Sequence
 
 from jinja2 import Environment, FileSystemLoader, StrictUndefined
 
@@ -15,11 +15,7 @@ def get_templates(search_path: Path, variables: dict) -> Sequence[tuple[Path, st
     )
 
     # templates
-    templates = [
-        (template, env.get_template(template))
-        for template in env.list_templates()
-        if "__pycache__" not in template
-    ]
+    templates = [(template, env.get_template(template)) for template in env.list_templates() if "__pycache__" not in template]
 
     # rendered templates
     rendered_templates = [
@@ -34,11 +30,7 @@ def get_templates(search_path: Path, variables: dict) -> Sequence[tuple[Path, st
 
 
 def get_static(search_path: Path) -> Sequence[tuple[Path, str]]:
-    return [
-        (f.relative_to(search_path), f.read_text())
-        for f in search_path.glob("**/*")
-        if f.is_file()
-    ]
+    return [(f.relative_to(search_path), f.read_text()) for f in search_path.glob("**/*") if f.is_file()]
 
 
 def get_content(
@@ -46,14 +38,10 @@ def get_content(
     templates_search_path: Path,
     templates_variables: dict[str, str],
 ) -> Sequence[tuple[Path, str]]:
-    return get_templates(templates_search_path, templates_variables) + get_static(
-        static_search_path
-    )
+    return get_templates(templates_search_path, templates_variables) + get_static(static_search_path)
 
 
-def write(
-    content: Sequence[tuple[Path, str]], output_path: Path, exists_ok=False
-) -> None:
+def write(content: Sequence[tuple[Path, str]], output_path: Path, exists_ok=False) -> None:
     if not exists_ok:
         for rel_path, _ in content:
             path = output_path.joinpath(rel_path)
