@@ -21,7 +21,7 @@ def test_generate_success(test_dir):
             [
                 (".migration/refs.json", "r"),
                 ("pom.xml", "<project>\n    <artifactId>a</artifactId>\n</project>"),
-                (Path("example.txt"), "Hello"),
+                ("example.txt", "Hello"),
             ],
             output_path,
             False,
